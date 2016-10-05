@@ -3,7 +3,14 @@ html
     title Manage Files
   body
     h1 Manage Files
+    p This is your file management dashboard.
+    h2 Upload a File
+    form(enctype="multipart/form-data", method="post")
+      input(type="file", name="file")
+      input(type="submit", value="Upload")
+    h2 Files
     ul
       each val, key in files
         li
-          a(href=val.href) #{key} <a href="/delete?filename=#{key}">delete</a>
+          a(href=val.href) #{key}
+          <form style="display: inline" method="post" action="/delete?filename=#{key}"><input type="submit" value="delete"></form>
