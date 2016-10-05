@@ -1,0 +1,9 @@
+html
+  head
+    title Manage Files
+  body
+    h1 Manage Files
+    ul
+      each val, key in files
+        li
+          a(href=val.href) #{key} <a href="/delete?filename=#{key}">delete</a>
