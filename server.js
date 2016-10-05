@@ -41,7 +41,7 @@ app.use(stormpathS3({
 }));
 
 app.get("/", stormpath.loginRequired, (req, res) => {
-  res.render("upload");
+  res.render("files", { files: req.user.customData.s3 });
 });
 
 app.post("/", stormpath.loginRequired, upload.single("file"), (req, res, next) => {
@@ -53,17 +53,13 @@ app.post("/", stormpath.loginRequired, upload.single("file"), (req, res, next) =
       return next(err);
     }
 
-    res.send("File available <a href=\"" + req.user.customData.s3[fileName].href + "\">here</a>.");
+    res.render("files", { files: req.user.customData.s3 });
   });
 });
 
-app.get("/files", stormpath.loginRequired, (req, res, next) => {
-  res.render("files", { files: req.user.customData.s3 });
-});
-
-app.get("/delete", stormpath.loginRequired, (req, res, next) => {
+app.post("/delete", stormpath.loginRequired, (req, res, next) => {
   if (!req.query.filename) {
-    return res.redirect("/files");
+    return res.redirect("/");
   }
 
   req.user.deleteFile(req.query.filename, (err) => {
@@ -71,7 +67,7 @@ app.get("/delete", stormpath.loginRequired, (req, res, next) => {
       return next(err);
     }
 
-    res.redirect("/files");
+    res.redirect("/");
   });
 });
 
