@@ -1,7 +1,7 @@
 {
   "name": "express-stormpath-s3",
   "version": "1.0.0",
-  "description": "",
+  "description": "Source code for a simple webinar project showcasing express-stormpath-s3.",
   "main": "server.js",
   "dependencies": {
     "express-stormpath": "^3.1.5",
@@ -19,8 +19,8 @@
     "type": "git",
     "url": "git+https://github.com/rdegges/express-stormpath-s3-webinar.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Randall Degges",
+  "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/rdegges/express-stormpath-s3-webinar/issues"
   },
