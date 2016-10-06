@@ -13,4 +13,5 @@ html
       each val, key in files
         li
           a(href=val.href) #{key}
-          <form style="display: inline" method="post" action="/delete?filename=#{key}"><input type="submit" value="delete"></form>
+          form(style="display: inline", method="post", action="/delete?filename=" + key)
+            input(type="submit", value="delete")
